@@ -1,0 +1,30 @@
+version: "3.5"
+
+services:
+  frontend:
+    restart: always
+    build: ./frontend
+    ports:
+     - "4200:4200"
+    volumes:
+     - ./frontend:/usr/src/app
+    command: bash -c "tail -f /dev/null"
+  
+  backend:
+    restart: always
+    image: node
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/usr/src/app
+    command: bash -c "tail -f /dev/null"
+
+  database:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - db-data:/data/db
+
+volumes:
+  db-data:
