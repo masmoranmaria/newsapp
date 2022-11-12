@@ -1,8 +1,13 @@
+import 'reflect-metadata';
+import { createExpressServer } from 'routing-controllers';
+import NewsController from './src/controllers/news.controller';
 import express, { Request, Response } from 'express';
-const app = express();
+import initDB from './src/config/database';
 
-app.get('/', function (req: Request, res: Response) {
-  res.send('Hello World');
+const app = createExpressServer({
+  controllers: [NewsController]
 })
+
+initDB();
 
 app.listen(3000); 
