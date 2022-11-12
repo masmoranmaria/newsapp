@@ -19,6 +19,14 @@ class NewsService{
         return this.newsRepository.save(news);
     }
 
+    archive(id: string) {
+        return this.newsRepository.update(id);
+    }
+
+    delete(id: string) {
+        return this.newsRepository.delete(id);
+    }
+
 }
 
 export default NewsService;
