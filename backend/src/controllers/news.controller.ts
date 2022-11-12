@@ -7,24 +7,24 @@ import NewsService from '../services/news.service';
 @Controller('/news')
 class NewsController{
    
-    constructor(private newsService: NewsService){
+    constructor(private newsService: NewsService) {
         this.newsService = Container.get(NewsService);
     };
 
     @Get()
     @ContentType("application/json")
-    findAll(){
+    findAll() {
         return this.newsService.findAll();
     }
 
     @Get('/:id')
-    findOne(@Req() request: Request){
+    findOne(@Req() request: Request) {
         return this.newsService.findOne(request.params.id);
     }
 
     @Post()
     @UseBefore(json())
-    save(@Body() news: INew){
+    save(@Body() news: INew) {
         return this.newsService.save(news);
     }
 }

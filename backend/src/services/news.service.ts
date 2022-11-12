@@ -4,17 +4,17 @@ import NewsRepository from '../repositories/news.repository';
 
 @Service()
 class NewsService{
-    constructor(private readonly newsRepository: NewsRepository){};
+    constructor(private readonly newsRepository: NewsRepository) {};
 
-    findAll(){
+    findAll() {
         return this.newsRepository.findAll();
     }
 
-    findOne(id: string){
+    findOne(id: string) {
         return this.newsRepository.findOne(id);
     }
 
-    save(news: INew){
+    save(news: INew) {
         news.date = new Date();
         return this.newsRepository.save(news);
     }

@@ -8,11 +8,11 @@ class NewsRepository {
         return await New.find().lean().exec();
     }
 
-    async findOne(id: string){
+    async findOne(id: string) {
         return await New.findById(id).lean().exec();
     }
 
-    async save(news: INew){
+    async save(news: INew) {
         const model = await new New(news).save();
         return model.toObject();
     } 
