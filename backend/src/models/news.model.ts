@@ -3,10 +3,10 @@ import { model, Schema } from 'mongoose';
 export interface INew extends Document{
     title: string,
     description: string,
-    date: Date,
+    date?: Date,
     content: string,
     author: string,
-    archiveDate: Date
+    archiveDate?: Date
 }
 
 const NewSchema: Schema = new Schema ({

@@ -15,6 +15,7 @@ class NewsService{
     }
 
     save(news: INew){
+        news.date = new Date();
         return this.newsRepository.save(news);
     }
 
