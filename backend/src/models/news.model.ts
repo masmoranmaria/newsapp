@@ -1,4 +1,4 @@
-import { Schema, model, Model, Types } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
 export interface INew extends Document{
     title: string,

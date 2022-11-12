@@ -1,5 +1,5 @@
-import { json } from 'express';
-import { Body, Controller, Get, Post, UseBefore } from 'routing-controllers';
+import { json, Request } from 'express';
+import { Body, ContentType, Controller, Get, Post, Req, UseBefore } from 'routing-controllers';
 import Container from 'typedi';
 import { INew } from '../models/news.model';
 import NewsService from '../services/news.service';
@@ -12,8 +12,14 @@ class NewsController{
     };
 
     @Get()
+    @ContentType("application/json")
     findAll(){
         return this.newsService.findAll();
+    }
+
+    @Get('/:id')
+    findOne(@Req() request: Request){
+        return this.newsService.findOne(request.params.id);
     }
 
     @Post()

@@ -1,6 +1,5 @@
-import New, { INew } from '../models/news.model';
 import { Service } from 'typedi';
-import { Types } from 'mongoose';
+import New, { INew } from '../models/news.model';
 
 @Service()
 class NewsRepository {
@@ -9,10 +8,15 @@ class NewsRepository {
         return await New.find().lean().exec();
     }
 
+    async findOne(id: string){
+        return await New.findById(id).lean().exec();
+    }
+
     async save(news: INew){
         const model = await new New(news).save();
         return model.toObject();
     } 
+   
 }
 
 export default NewsRepository;

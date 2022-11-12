@@ -10,9 +10,14 @@ class NewsService{
         return this.newsRepository.findAll();
     }
 
+    findOne(id: string){
+        return this.newsRepository.findOne(id);
+    }
+
     save(news: INew){
         return this.newsRepository.save(news);
     }
+
 }
 
 export default NewsService;
