@@ -17,6 +17,12 @@ class NewsController{
         return this.newsService.findAll();
     }
 
+    @Get('/archive')
+    @ContentType("application/json")
+    findAllArchive() {
+        return this.newsService.findAllArchive();
+    }
+
     @Get('/:id')
     findOne(@Req() request: Request) {
         return this.newsService.findOne(request.params.id);

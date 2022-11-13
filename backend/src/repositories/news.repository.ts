@@ -4,8 +4,8 @@ import New, { INew } from '../models/news.model';
 @Service()
 class NewsRepository {
 
-    async findAll() {
-        const allNews = await New.find().lean().exec();
+    async findAll(query = { archiveDate: { $exists: false } }, sort = {sort: {date: -1}}) {
+        const allNews = await New.find(query, null, sort).lean().exec();
         allNews.map(news => news._id = news._id.toString());
         return allNews;
     }

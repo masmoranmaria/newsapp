@@ -6,8 +6,12 @@ import NewsRepository from '../repositories/news.repository';
 class NewsService{
     constructor(private readonly newsRepository: NewsRepository) {};
 
-    async findAll() {
+    findAll() {
         return this.newsRepository.findAll();
+    }
+
+    findAllArchive() {
+        return this.newsRepository.findAll({ archiveDate: { $exists: true } });
     }
 
     findOne(id: string) {
