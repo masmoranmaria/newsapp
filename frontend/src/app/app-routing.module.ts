@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CardComponent } from './shared/card/card.component';
+import { NewsComponent } from './news/news/news.component';
 
 const routes: Routes = [
   {
     path:"news",
-    component: CardComponent,
+    component: NewsComponent,
     pathMatch: "full"
   }
 ];

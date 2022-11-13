@@ -7,10 +7,9 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class CardComponent implements OnInit {
 
-  constructor(private newsService: NewsService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.newsService.getNews().subscribe((data)=>console.log(data));
   }
 
 }
