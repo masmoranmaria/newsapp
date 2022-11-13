@@ -4,9 +4,15 @@ import NewsController from './src/controllers/news.controller';
 import express, { Request, Response } from 'express';
 import initDB from './src/config/database';
 
+import cors from "cors"
+
 const app = createExpressServer({
-  controllers: [NewsController]
+  controllers: [NewsController],
+  cors: {
+    origin: "*",
+  }
 })
+
 
 initDB();
 
