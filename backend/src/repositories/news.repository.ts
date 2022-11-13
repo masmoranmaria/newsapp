@@ -5,7 +5,9 @@ import New, { INew } from '../models/news.model';
 class NewsRepository {
 
     async findAll() {
-        return await New.find().lean().exec();
+        const allNews = await New.find().lean().exec();
+        allNews.map(news => news._id = news._id.toString());
+        return allNews;
     }
 
     async findOne(id: string) {

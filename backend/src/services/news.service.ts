@@ -6,7 +6,7 @@ import NewsRepository from '../repositories/news.repository';
 class NewsService{
     constructor(private readonly newsRepository: NewsRepository) {};
 
-    findAll() {
+    async findAll() {
         return this.newsRepository.findAll();
     }
 
