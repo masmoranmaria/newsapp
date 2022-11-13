@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NewsService } from 'src/app/services/news.service';
 import { Inew } from '../interfaces/inew';
 
 @Component({
@@ -8,6 +9,7 @@ import { Inew } from '../interfaces/inew';
 export class CardComponent implements OnInit {
 
   @Input () data: Inew = {
+    _id: "",
     title: "",
     description: "",
     date: new Date(),
@@ -15,9 +17,17 @@ export class CardComponent implements OnInit {
     author: ""
   };
 
-  constructor() { }
+  constructor(private newsService: NewsService) { };
 
   ngOnInit(): void {
+  }
+
+  archiveNew(id: string) {
+    this.newsService.archive(id).subscribe(data => this.newsService.getNews());
+  }
+
+  deleteNew(id: string) {
+    this.newsService.delete(id).subscribe(data => this.newsService.getArchive());
   }
 
 }

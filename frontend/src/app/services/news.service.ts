@@ -8,11 +8,36 @@ import { Inew } from '../shared/interfaces/inew';
 })
 export class NewsService {
 
-  uri = 'http://172.17.0.1:3000';
+  private currentNews: Inew[] = [];
+
+  private archiveNews: Inew[] = [];
+
+  uri = 'http://172.17.0.1:3000/news';
 
   constructor(private http: HttpClient) { }
 
-  getNews(): Observable<Inew[]> {
-    return this.http.get<Inew[]>(`${this.uri}/news`);
+  get news(): Inew[] {
+    return [...this.currentNews];
   }
+
+  get archives() : Inew[] {
+    return [...this.archiveNews];
+  }
+
+  getNews() {
+    this.http.get<Inew[]>(`${this.uri}`).subscribe((data) => this.currentNews = data);
+  }
+
+  getArchive() {
+    this.http.get<Inew[]>(`${this.uri}/archive`).subscribe((data) => this.archiveNews = data);
+  }
+
+  archive(id: string): Observable<Inew> {
+    return this.http.put<Inew>(`${this.uri}/${id}`, {});
+  } 
+
+  delete(id: string): Observable<Inew> {
+    return this.http.delete<Inew>(`${this.uri}/${id}`);
+  }
+
 }

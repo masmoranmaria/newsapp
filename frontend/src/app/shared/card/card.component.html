@@ -6,9 +6,11 @@
       <p class="card-text"> {{ data.author }} </p>
       <p class="card-text"> {{ data.date | date:'short' }} </p>
       <p class="card-text"> {{ data.archiveDate | date:'short' }} </p>
-      <a href="#" class="btn btn-dark" *ngIf="!data.archiveDate"> Archive </a>
-      <ng-template #deletebutton>
-        <a href="#" class="btn btn-dark"> Delete </a>
-      </ng-template>
+      <div class="text-center">
+        <button (click)="archiveNew(data._id)" type="button" class="btn btn-dark" *ngIf="!data.archiveDate; else deletebutton"> Archive </button>
+        <ng-template #deletebutton>
+          <button (click)="deleteNew(data._id)"type="button" class="btn btn-outline-danger"> Delete </button>
+        </ng-template>
+      </div>
     </div>
 </div>

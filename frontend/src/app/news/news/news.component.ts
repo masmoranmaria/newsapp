@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
-import { Inew } from 'src/app/shared/interfaces/inew';
 
 @Component({
   selector: 'app-news',
@@ -9,12 +8,14 @@ import { Inew } from 'src/app/shared/interfaces/inew';
 
 export class NewsComponent implements OnInit {
 
-  newsData: Inew[] = [];
+  constructor(private newsService: NewsService) { };
 
-  constructor(private newsService: NewsService) { }
+  get newsData() {
+    return this.newsService.news;
+  }
 
   ngOnInit(): void {
-    this.newsService.getNews().subscribe((data) => this.newsData = data);
+    this.newsService.getNews();
   }
 
 }

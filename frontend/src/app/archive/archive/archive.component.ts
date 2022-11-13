@@ -8,12 +8,14 @@ import { NewsService } from 'src/app/services/news.service';
 
 export class ArchiveComponent implements OnInit {
 
-  archiveData: any;
+  constructor(private newsService: NewsService) { };
 
-  constructor(private archive: NewsService) { }
+  get newsData() {
+    return this.newsService.archives;
+  }
 
   ngOnInit(): void {
-    this.archive.getNews().subscribe((data) => this.archiveData = data);
+    this.newsService.getArchive();
   }
 
 }

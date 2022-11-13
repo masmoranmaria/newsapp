@@ -1,3 +1,4 @@
-<div class="row">
-    <app-card *ngFor="let card of newsData"></app-card>
+<div class="row mt-4">
+    <app-card class="col-md-3" *ngFor="let card of newsData" [data]="card" ></app-card>
 </div>
+  

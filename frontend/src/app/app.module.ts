@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { NewsService } from './services/news.service';
 import { NewsModule } from './news/news.module';
+import { ArchiveModule } from './archive/archive.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NewsModule } from './news/news.module';
     SharedModule,
     HttpClientModule,
     NewsModule,
+    ArchiveModule
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]
