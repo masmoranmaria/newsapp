@@ -6,7 +6,7 @@ export interface INew extends Document {
     date?: Date;
     content: string;
     author: string;
-    archiveDate?: Date
+    archiveDate?: Date;
 }
 
 const NewSchema: Schema = new Schema ({
