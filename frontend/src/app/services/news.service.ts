@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Inew } from '../shared/interfaces/inew';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class NewsService {
 
   private archiveNews: Inew[] = [];
 
-  uri = 'http://172.17.0.1:3000/news';
+  uri = `${environment.backend_url}/news`;
 
   constructor(private http: HttpClient) { }
 

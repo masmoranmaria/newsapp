@@ -13,7 +13,17 @@ const routes: Routes = [
     path:"archive",
     component: ArchiveComponent,
     pathMatch: "full"
-  }
+  },
+  {
+    path:"",
+    redirectTo:"news",
+    pathMatch: "full"
+  },
+  {
+    path:"**",
+    redirectTo:"news",
+    pathMatch: "full"
+  },
 ];
 
 @NgModule({
