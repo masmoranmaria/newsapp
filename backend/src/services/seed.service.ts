@@ -133,9 +133,11 @@ class SeedService {
   async generateData() {
 
     let promises: Promise<any>[] = []
-    console.log("Pepino");
-    
-    this.randomData.forEach(data => promises.push(this.newsRepository.save(data)));
+
+    this.randomData.forEach(data => {
+      data.date = new Date();
+      promises.push(this.newsRepository.save(data))
+    });
     
     await Promise.allSettled(promises);
     
