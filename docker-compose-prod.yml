@@ -3,23 +3,17 @@ version: "3.5"
 services:
   frontend:
     restart: always
-    image: node
+    build: ./frontend
     ports:
      - "4200:4200"
-    volumes:
-      - ./frontend:/usr/src/app
-    command: bash -c "tail -f /dev/null"
   
   backend:
     restart: always
-    image: node
+    build: ./backend
     ports:
       - "3000:3000"
-    volumes:
-      - ./backend:/usr/src/app
     environment:
       - DB_URI=mongodb://database:27017/newsapp
-    command: bash -c "tail -f /dev/null"
 
   database:
     image: mongo:4.4
